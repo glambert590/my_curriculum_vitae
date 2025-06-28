@@ -3,7 +3,7 @@ services:
     name: gabriel-cv
     runtime: node
     buildCommand: npm install
-    startCommand: npm start
+    startCommand: node server.js
     env: node
     envVars:
       - key: PORT
