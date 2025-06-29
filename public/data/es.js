@@ -17,7 +17,8 @@ export default {
     experience: "experiencia",
     education: "educación",
     skills: "habilidades",
-    print: "imprimir"
+    print: "imprimir",
+    name: "Gabriel Lambert"
   },
   education: {
     title: "Educación",

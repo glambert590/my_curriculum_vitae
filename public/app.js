@@ -17,14 +17,28 @@ class CVApp {
       lang: 'en',
       data: enData
     };
-
-    this.dropdownInstance = null; // Guardaremos la instancia del dropdown aquí
+    this.dropdownInstance = null;
     this.init();
   }
 
   init() {
     this.render();
-    this.setupDropdown();
+    this.setupGlobalListeners();
+
+  }
+
+  setupGlobalListeners() {
+    // Listeners que solo necesitan configurarse una vez
+    window.addEventListener('scroll', this.handleScroll.bind(this));
+    window.addEventListener('scroll', () => this.closeAllMenus(), { passive: true });
+  }
+
+  handleScroll() {
+    const menuButton = document.getElementById('mobile-menu-button');
+    if (menuButton) {
+      menuButton.style.position = 'fixed';
+      menuButton.style.zIndex = '1001';
+    }
   }
 
   render() {
@@ -35,16 +49,96 @@ class CVApp {
 
     const app = document.getElementById('app');
     app.innerHTML = `
-    ${Header(this.state.data.header, this.state.lang)}
-    ${Education(this.state.data.education)}
-    ${Experience(this.state.data.experience)}
-    ${Languages(this.state.data.languages)}
-    ${Skills(this.state.data.skills)}
-    ${Contact(this.state.data.contact)}
+      ${Header(this.state.data.header, this.state.lang)}
+      ${Education(this.state.data.education)}
+      ${Experience(this.state.data.experience)}
+      ${Languages(this.state.data.languages)}
+      ${Skills(this.state.data.skills)}
+      ${Contact(this.state.data.contact)}
     `;
 
-    // Volvemos a configurar el dropdown después de cada render
+    this.setupDynamicListeners();
+  }
+
+  setupDynamicListeners() {
     this.setupDropdown();
+    this.setupMobileMenu();
+    this.setupNavNameClick();
+  }
+
+  closeAllMenus() {
+    const menu = document.getElementById('mobile-menu');
+    const dropdownMenu = document.getElementById('mobile-dropdownMenu');
+
+    menu?.classList.remove('active');
+    dropdownMenu?.classList.add('hidden');
+    this.dropdownInstance?.hide();
+  }
+  setupNavNameClick() {
+    const navName = document.getElementById('nav-name');
+    if (navName) {
+      navName.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+  }
+
+  setupMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const menuButton = document.getElementById('mobile-menu-button');
+    const dropdownButton = document.getElementById('mobile-dropdownButton');
+    const dropdownMenu = document.getElementById('mobile-dropdownMenu');
+
+    // Limpiar listeners antiguos
+    const cleanElement = (element) => {
+      if (element) {
+        const newElement = element.cloneNode(true);
+        element.replaceWith(newElement);
+        return newElement;
+      }
+      return null;
+    };
+
+    const cleanMenuButton = cleanElement(menuButton);
+    const cleanDropdownButton = cleanElement(dropdownButton);
+
+    // Menú principal
+    cleanMenuButton?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      menu.classList.toggle('active');
+      dropdownMenu?.classList.add('hidden');
+      this.dropdownInstance?.hide();
+    });
+
+    // Dropdown de idiomas
+    cleanDropdownButton?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      dropdownMenu?.classList.toggle('hidden');
+
+      if (dropdownMenu && !dropdownMenu.classList.contains('hidden')) {
+        const dropdownRect = dropdownMenu.getBoundingClientRect();
+        if (dropdownRect.bottom > window.innerHeight) {
+          menu.scrollTop += (dropdownRect.bottom - window.innerHeight + 10);
+        }
+      }
+    });
+
+    // Cerrar menús al hacer click fuera
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#mobile-menu') && !e.target.closest('#mobile-menu-button')) {
+        menu?.classList.remove('active');
+      }
+
+      if (!e.target.closest('#mobile-dropdownButton') && !e.target.closest('#mobile-dropdownMenu')) {
+        dropdownMenu?.classList.add('hidden');
+      }
+    });
   }
 
   setupDropdown() {
@@ -84,7 +178,7 @@ class CVApp {
         const selectedValue = option.dataset.value;
         const selectedText = option.querySelector('span').textContent;
         const selectedIcon = option.querySelector('img').src;
-        
+
         this.handleSelection(selectedValue, selectedText, selectedIcon);
         this.dropdownInstance.hide();
       };
@@ -97,31 +191,23 @@ class CVApp {
       });
     }
   }
-
-  // Método para manejar la selección de idioma
   handleSelection(value, text, iconSrc) {
-    console.log('Selección:', { value, text, iconSrc });
-
     const button = document.getElementById('dropdownButton');
     if (!button) return;
 
-    // Actualizar el botón
     const buttonText = button.querySelector('.dropdown-button-text');
     const buttonIcon = button.querySelector('img');
 
     if (buttonText) buttonText.textContent = text;
     if (buttonIcon) buttonIcon.src = iconSrc;
 
-    // Cambiar el idioma y los datos
     this.state.lang = value;
     this.state.data = value === 'es' ? esData : enData;
-    
-    // Volver a renderizar
+
     this.render();
   }
 }
 
-// Iniciamos la aplicación
 document.addEventListener('DOMContentLoaded', () => {
   new CVApp();
 });

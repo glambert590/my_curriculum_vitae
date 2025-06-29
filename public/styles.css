@@ -12,3 +12,62 @@
       width: 100%;
     }
   }
+ /* Menú móvil */
+#mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30%;
+  max-width: 300px;
+  height: 100vh;
+  z-index: 1000;
+  background: white;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  padding-top: 70px;
+}
+
+#mobile-menu.active {
+  transform: translateX(0);
+}
+
+/* Botón del menú móvil */
+#mobile-menu-button {
+  position: fixed !important;
+  z-index: 1001 !important;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dropdown de idiomas móvil */
+#mobile-dropdownMenu {
+  position: absolute;
+  right: 15px;
+  top: 60px;
+  width: calc(100% - 30px);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1002;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+/* Asegurar que ningún elemento interfiera */
+header, nav {
+    z-index: auto !important;
+}
+
+

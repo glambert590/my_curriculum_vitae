@@ -15,7 +15,8 @@ export default {
     experience: "experience",
     education: "education",
     skills: "skills",
-    print: "print"
+    print: "print",
+    name: "Gabriel Lambert"
   },
   education: {
     title: "Education",
