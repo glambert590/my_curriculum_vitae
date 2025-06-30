@@ -33,13 +33,13 @@ export default {
         description: "Develop and deployed microservices in .Net projects. Maintenance of in-production web services and SQL Databases using SQL statements and ORMs.",
         achievements: {
           "Key Achievements": [
-            "Led the design and implementation of 15+ microservices in .NET Core, reducing response times by 40% and improving scalability for 3 critical banking core services.",
+            "Led the design and implementation of 15+ microservices in .NET Core, reducing response times by 40% and improving scalability for 3 critical of Core Bancario project.",
             {
               main: "Modernized 5 legacy systems, migrating from obsolete frameworks to modern microservices-based architectures with:",
               details: [
                 "Docker for containerization",
                 "CI/CD (Azure DevOps) for automated deployments",
-                "Well-documented RESTful APIs"
+                "RESTful APIs"
               ]
             }
           ],
@@ -49,16 +49,16 @@ export default {
               details: [
                 "Git Flow for version control",
                 "Docker Compose for local environments",
-                "Well-documented RESTful APIs"
+                "Gitea Workflows for automated deployments in isolated environments"
               ]
             },
-            `<strong>Result:</strong> 60% reduction in environment errors and 35% increase in onboarding speed`
+            `<strong>Result:</strong> 60% reduction in environment errors`
           ],
           "Database Optimization": [
             {
               main: "Redesigned 20+ stored procedures in SQL Server achieving:",
               details: [
-                "Performance improvements up to 300% for critical queries",
+                "Performance improvements even for critical queries",
                 "Reduced locks in concurrent transactions"
               ]
             }
@@ -68,7 +68,6 @@ export default {
               main: "Developed a custom Identity Provider based on Keycloak that:",
               details: [
                 "Centralized authentication for 12 internal applications",
-                "Reduced login times by 25%",
                 "Currently handles 5M+ authentications/month"
               ]
             }

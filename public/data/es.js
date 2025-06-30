@@ -6,7 +6,7 @@ export default {
       <p class="mb-6">
         <strong>Desarrollador Backend .NET</strong><br>
         Con <strong>3 años de experiencia</strong> en <strong>servicios web, APIs REST y microservicios</strong>, especializado en modernizar sistemas legacy en el <strong>sector bancario</strong>.<br>
-        - Roles de desarrollo integral: <strong>desarrollador, tester y DevOps</strong> (entrega de soluciones end-to-end).<br>
+        - Roles de desarrollo integral: <strong>desarrollador, tester y DevOps</strong>.<br>
         - Apasionado por el <strong>código limpio, patrones de diseño y arquitectura escalable</strong>.<br>
         - Tareas diarias: <strong>soporte a sistemas críticos, desarrollo de microservicios y containerización con Docker</strong>.
       </p>
@@ -30,18 +30,18 @@ export default {
     title: "Experiencia profesional",
     sections: [
       {
-        company: "Banco Central de Cuba | Specialist on software development",
+        company: "Banco Central de Cuba | Especialista en desarrollo de software",
         date: "Jan. 2022 - Present",
-        description: "Develop and deployed microservices in .Net projects. Maintenance of in-production web services and Sql Databases using sql statements and ORM’s.",
+        description: "Desarrollé e implementé microservicios en proyectos .Net. Realicé mantenimiento de servicios web en producción y bases de datos SQL utilizando consultas SQL y ORM's.",
         achievements: {
           "Logros Claves": [
-            "Lideré el diseño e implementación de 15+ microservicios en .NET Core, reduciendo tiempos de respuesta en 40% y mejorando la escalabilidad para 3 servicios críticos del core bancario.",
+            "Lideré el diseño e implementación de 15+ microservicios en .NET Core, reduciendo tiempos de respuesta en 40% y mejorando la escalabilidad para 3 servicios críticos del proyecto Core Bancario.",
             {
               main: "Modernicé 5 sistemas legacy, migrando de frameworks obsoletos a arquitecturas modernas basadas en microservicios con:",
               details: [
                 "Docker para containerización",
                 "CI/CD (Azure DevOps) para despliegues automatizados",
-                "APIs RESTful bien documentadas"
+                "APIs RESTful"
               ]
             }
           ],
@@ -51,17 +51,17 @@ export default {
               details: [
                 "Git Flow para control de versiones",
                 "Docker Compose para entornos locales",
-                "APIs RESTful bien documentadas",
+                "Gitea Workflows para despliegues automáticos en entorno aislado",
 
               ]
             },
-            `<strong>Resultado:</strong> Reducción del 60% en errores de entorno y aumento del 35% en velocidad de onboarding`
+            `<strong>Resultado:</strong> Reducción del 60% en errores de entorno`
           ],
           "Optimización de Bases de Datos:": [
             {
               main: "Rediseñé 20+ procedimientos almacenados en SQL Server logrando:",
               details: [
-                "Mejoras de performance hasta en 300% para consultas críticas",
+                "Mejoras de rendimiento hasta en consultas críticas",
                 "Reducción de bloqueos en transacciones concurrentes",
               ]
             }
@@ -71,7 +71,6 @@ export default {
               main: "Desarrollé un Proveedor de Identidad personalizado basado en Keycloak que:",
               details: [
                 "Centralizó la autenticación para 12 aplicaciones internas",
-                "Redujo tiempos de login en 25%",
                 "Actualmente maneja 5M+ autenticaciones/mes"
               ]
             }
